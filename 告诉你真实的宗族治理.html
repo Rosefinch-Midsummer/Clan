@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>告诉你真实的宗族治理 - Mdbook Template</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="前言.html">前言</a></li><li class="chapter-item expanded affix "><li class="part-title">禮典</li><li class="chapter-item expanded affix "><li class="part-title">理論</li><li class="chapter-item expanded "><a href="不断重建自治共同体的中国史.html"><strong aria-hidden="true">1.</strong> 不断重建自治共同体的中国史</a></li><li class="chapter-item expanded "><a href="“家”的前生与今世.html"><strong aria-hidden="true">2.</strong> “家”的前生与今世</a></li><li class="chapter-item expanded "><a href="家谱土得掉渣？其实自古是贵族专利.html"><strong aria-hidden="true">3.</strong> 家谱土得掉渣？其实自古是贵族专利</a></li><li class="chapter-item expanded affix "><li class="part-title">實踐</li><li class="chapter-item expanded "><a href="宋代儒者与宗族重建之关系探微.html"><strong aria-hidden="true">4.</strong> 宋代儒者与宗族重建之关系探微</a></li><li class="chapter-item expanded "><a href="义庄：被遗忘的中国式公益基金会.html"><strong aria-hidden="true">5.</strong> 义庄：被遗忘的中国式公益基金会</a></li><li class="chapter-item expanded "><a href="告诉你真实的宗族治理.html" class="active"><strong aria-hidden="true">6.</strong> 告诉你真实的宗族治理</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mdbook Template</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="吴钩告诉你真实的宗族治理"><a class="header" href="#吴钩告诉你真实的宗族治理">【吴钩】告诉你真实的宗族治理</a></h1>
+<p>《白鹿原》是一部讲述传统宗族社会的治理秩序及其崩溃的文学作品，电影版似乎弱化了这一主题，而突出田小娥与几个男人之间情欲纠缠的线索，仿佛要向《红高梁》、《大红灯笼高高挂》致敬。不过，借着电影引起的热议，我们还是可以重温清末民初之际关中平原的宗族社会画面，并借此纠正一百年来主流历史叙述对于宗族组织的一些偏见。</p>
+<p>提起传统社会的宗族组织、宗法秩序，今人也许会不假思索地联想到“封建专制”，以为宗族就是皇权专制的缩影，族规是森严冷酷的，宗法是等级森然的，而族长则是一个土皇帝一般的独裁者。但我不得不说，如果我们不是满足于“五四”吴虞之流的陈词与“家春秋”等小说的描述，而是愿意回到历史现场，我们会发现宗族社会绝不是“专制”二字所能概括的。</p>
+<p>要了解并理解宗族的治理秩序，经历过宗族社会的前人的回忆录，比之主题先行的批判文章与文学作品，可以提供更接近历史真实的材料。钱穆先生的回忆录《八十忆双亲》提到，钱氏宗族有义庄三所，钱穆在父亲病逝后，一家子便靠义庄赈济，“自此五世同堂一宅，幼有养，老有归，皆得赖祖宗庇荫，粗衣淡食无忧，一宅欢然。”《胡适口述自传》也提到，他的父亲胡传原本帮衬家人料理茶叶店，“因为十分聪颖，早为其有志为学的伯父所赏识。他认为有这样资质的青年子侄，实在不应该在一个小茶叶店里埋没了。所以父亲被家中长辈特地选出，让他专心读书，以便参加科举。”这里说的是宗族为族人提供了“教”与“养”的救济与福利。</p>
+<p>蒋廷黻先生的回忆录也有一段材料：“在乡间，每族都有他们自己的祠堂和族长，族长在家族中具有无上权威。大多数的祠堂都有祠堂公产，公产收入用于修缮、祭祀、救济族人，补助同族子弟，特别是聪明而贫苦的学生学费。族人间的争执大都由族长们出面排解。”宗族除了周济族人，还通过族长的权威维持了乡土社会的自治秩序。</p>
+<p>不错，“族长在家族中具有无上权威”，但“权威”并不等于“专制”。族长的权威必须建立在自身的德行、能力、威望与族众的认可上。不孚众望、武断乡曲之人，是难以被公选出来担任一族之长的，如清代武进城南张姓《宗约》规定：“族长虽序行序齿，以有德为主，若分虽尊，而德不足以信于人，即强为武断，众共摒之，弗听命，焉可也？”从这里也可以看出，族长的产生是经过族内公举的。族长若不合格，可以更换，湖南湘乡匡氏《家规》说：“倘户长有私，通族合议重罚；择房长中贤而有德者更立之，房长有私，通族合议，择本房中之才而有能者更立之。”</p>
+<p>而且，族长的权力，还受到族规的约束、宗族会议的制衡。我看过不少明清时期的族规，应该说，这些族规确实强调了尊卑有别、长幼有序，族人要服从族长的管束，但这并不意味着族长可以专制，恰恰相反，族长应为族人表率，遵守族规，体恤族人，和睦邻里，敦厚风俗。如果族长“行诣有愧，触犯规条，合族齐集，公讨其罪，如稍有改悔，聊示薄惩，以警其后，不然则削去族长名字，永远不许再立”（《交河李氏族谱·谱例》。</p>
+<p>事实上，“尊卑有别、长幼有序”的宗法秩序通常只体现在礼仪与精神上，对族内政务性的治理，宗族则表现为另一种比较平等与民主的秩序，族中公事须由各房公议、族会决议。不妨来看江西浮梁郑氏宗族的祖训：“宗事于众，无小大俱集庙，从长公议”。庙，就是宗族祠堂，为一族的议事机构。梁启梁的记录也可以提供佐证。在任公的家乡广东新会茶坑乡，梁姓约有三千人，自成一保，其自治机关为梁氏宗祠“叠绳堂”，“自治机关之最高权，由叠绳堂子孙年五十一岁以上之耆老会议掌之”。耆老会议“以对于纷争之调解或裁判为最多。每有纷争，最初由亲友耆老和解，不服则诉诸各房分祠，不服则诉诸叠绳堂，叠绳堂为一乡最高法庭，不服则讼于官矣。然不服叠绳之判决而兴讼，乡人认为不道德，故行者极希。”叠绳堂的耆老会议，隐隐然已有“宗族议会”的模样。</p>
+<p>我说“宗族议会”，并不是出于一厢情愿的假想。晚清时，随着西方宪政思潮的传入，一些宗族得风气之先，率先引入议会制、选举制——这恐怕要出乎今日一些将宗族组织想象为顽固守旧形象的朋友的意料。光绪年间，绩溪华阳邵氏宗族即采用了民主投票的方式选举族长，一年一选，善则留任，不善则不选。最能体现宗族民主自治精神的，大概要算上海曹氏宗族在宣统元年开始实行的“谯国族会”。曹氏族会设有议长、副议长、评议员、契券保管员、会计、庶务、文牍、征租等，均经投票公举产生。举行族会时，须“议员半数以上到会，方得开议。到会议员有过半数同意方得取决”；“议员意见或两歧时，以多数取决；两数相等，则取决于议长”；“主席（议长）有汇集到会议员意见分付表决之权，惟不得参加己意；如有发表，须请副议长主席，而退就议员位，方得发言”。可以看出，曹氏族会已具备相当完善的议会品质。</p>
+<p>宗族议会、民主票选虽然是新鲜事物，却不是全无由来，而是宗族会议与公举族长惯例在新时代的发展创新。“五四”时期的吴虞与陈独秀等人，认定传统的宗族组织是国家进步的巨大障碍，必除之而后快，但有着立宪思想的新士绅们则认识到宗族组织可以成为宪政的训练基地。订立于宣统二年的“上湘龚氏族规”说，“窃我国预备立宪，必人人有自治之能力，而后有国民之资格。而欲求自治方法，莫如从家族入手。”梁启超也认为，乡族自治“宜其为建国之第一基础也”。</p>
+<p>然而，“五四”之后，还是全盘性反传统主义主导了历史进程，正如《白鹿原》后半部所展现的那样，传统宗族组织与礼俗秩序在时代洪流的冲击下全然解体，最后，个人成为了原子式状态的“螺丝钉”，被嵌入庞大的国家机器内。现在回过头看，还得承认当初新士绅群体的见识更有历史眼光。</p>
+<p>原载：2012-10-14《南方都市报》历史评论版</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="义庄：被遗忘的中国式公益基金会.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="义庄：被遗忘的中国式公益基金会.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
